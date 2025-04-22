@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tcc-php
+    ports:
+      - "80:80"             # acessa http://localhost:80
+    volumes:
+      - ./:/var/www/html  # monta seu código ao vivo
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    container_name: tcc-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root123      # senha do root
+      MYSQL_DATABASE: tcc               # nome do BD
+      MYSQL_USER: appuser               # usuário
+      MYSQL_PASSWORD: pass123           # senha do usuário
+    volumes:
+      - db_data:/var/lib/mysql          # persiste os dados
+    ports:
+      - "3306:3306"                     # opcional, só se quiser acesso externo
+
+volumes:
+  db_data:
