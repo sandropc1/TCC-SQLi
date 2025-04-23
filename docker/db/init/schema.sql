@@ -1,0 +1,13 @@
+CREATE DATABASE IF NOT EXISTS tcc;
+use tcc;
+
+CREATE TABLE if NOT EXISTS users (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  lastname VARCHAR(100),
+  email VARCHAR(150),
+  password VARCHAR(200),
+  image VARCHAR(200),
+  token VARCHAR(200),
+  bio TEXT
+);
