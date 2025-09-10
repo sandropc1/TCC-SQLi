@@ -56,7 +56,7 @@ require_once("dao/UserDAO.php");
                 </div>
             </form>
             <div class="row" id = "change-password-container">
-                <div class="col-md">
+                <div class="col-md-4">
                     <h2>Alterar a senha:</h2>
                     <p class="page-description">Digite a nova senha:</p>
                     <form action="<?= $BASE_URL ?>user_process.php" method="POST">
