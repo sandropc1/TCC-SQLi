@@ -43,13 +43,11 @@ require_once("dao/UserDAO.php");
                         <input type="submit" class="btn form-btn" value="Alterar">
                     </div>
                     <div class="col-md-4">
-                        <div id="profile-image-container" style="background-image url('<?= $BASE_URL ?>
-                        img/users/<?= $userData->image ?>')">
-                        </div>
-                        <div class="form-group">
+                        <div id="profile-image-container" style="background-image: url('<?= $BASE_URL ?>img/users/<?= $userData->image ?>')"></div>
+                            <div class="form-group">
                             <label for="image">Foto:</label>
                             <input type="file" class="form-control-file" name="image">
-                        </div>
+                            </div>
                          <div class="form-group">
                             <label for="bio">Sobre</label>
                             <textarea class = "form-control" name="bio" id="bio" rows="5" placeholder = "Escreva um pouco sobre você"></textarea>
@@ -65,11 +63,6 @@ require_once("dao/UserDAO.php");
                         <input type="hidden" name="type" value= "changepassword">
                         <div class="form-group">
                             <label for="password">Senha:</label>
-                            <input type="password" class="form-control" id="password" name="password" 
-                            placeholder="Digite a sua nova senha">
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Confirmação:</label>
                             <input type="password" class="form-control" id="password" name="password" 
                             placeholder="Digite a sua nova senha">
                         </div>
