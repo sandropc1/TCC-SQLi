@@ -40,7 +40,7 @@ require_once("dao/UserDAO.php");
                             <input type="text" readonly class="form-control disabled" id="email" name="email" 
                             placeholder="Digite seu nome" value="<?= $userData->email?>">
                         </div>
-                        <input type="submit" class="btn form-btn" value="Alterar">
+                        <input type="submit" class="btn card-btn" value="Alterar">
                     </div>
                     <div class="col-md-4">
                         <div id="profile-image-container" style="background-image: url('<?= $BASE_URL ?>img/users/<?= $userData->image ?>')"></div>
@@ -71,7 +71,7 @@ require_once("dao/UserDAO.php");
                             <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" 
                             placeholder="Confirme a sua nova senha">
                         </div>
-                        <input type="submit" class = "btn form-btn" value="Alterar">
+                        <input type="submit" class = "btn card-btn" value="Alterar">
                     </form>
                 </div>
             </div>
