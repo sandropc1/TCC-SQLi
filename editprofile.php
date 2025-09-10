@@ -50,7 +50,7 @@ require_once("dao/UserDAO.php");
                             </div>
                          <div class="form-group">
                             <label for="bio">Sobre</label>
-                            <textarea class = "form-control" name="bio" id="bio" rows="5" placeholder = "Escreva um pouco sobre você"></textarea>
+                            <textarea class = "form-control" name="bio" id="bio" rows="5" placeholder = "Escreva um pouco sobre você"><?= $userData->bio ?></textarea>
                         </div>
                     </div>
                 </div>
