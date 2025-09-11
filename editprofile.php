@@ -18,8 +18,7 @@ require_once("dao/UserDAO.php");
     
     <div id="main-container" class="container-fluid edit-profile-page">
         <div class= "col-md-12">
-            <form action="<?= $BASE_URL ?>user_process.php" method = "POST" enctype="multipart/
-            form-data">
+            <form action="<?= $BASE_URL ?>user_process.php" method = "POST" enctype="multipart/form-data">
                 <input type="hidden" name= "type" value= "update">
                 <div class = "row">
                     <div class ="col-md-4">
