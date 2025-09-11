@@ -88,7 +88,7 @@
 /* HOME*/
 
 #main-container {
-    background-image: url('/img/test.gif');
+    /* background-image: url('/img/test.gif'); */
     background-color: #1b1a1a;
     color: #FFF;
     min-height: 75vh;

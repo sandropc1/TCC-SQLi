@@ -33,9 +33,28 @@ require_once("dao/UserDAO.php");
 
     }else if($type === "changepassword"){
 
+        $password = filter_input(INPUT_POST, "password");      
+        $confirmpassword = filter_input(INPUT_POST, "confirmpassword");   
+        $id = filter_input(INPUT_POST, "id");   
+
+        if($password == $confirmpassword){
+
+            $user = new User();
+
+            $finalPassword = $user->generatePassword($password);
+
+            $user->password = $finalPassword;
+            $user->id = $id;
+
+            $userDAO->changePassword($user);
+
+        }else{
+        $message->setMessage("As senhas não coincidem", "error", "back");
+        }
+
     }else {
 
-        $message-setMessage("Informações inválidas!", "error", "index.php");
+        $message->setMessage("Informações inválidas!", "error", "index.php");
 
     }
 ?>
