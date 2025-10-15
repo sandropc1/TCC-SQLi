@@ -1,6 +1,6 @@
 <?php
 
-class Object {
+class Objects {
 
     public $id;
     public $title;

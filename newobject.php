@@ -16,7 +16,7 @@ require_once("dao/UserDAO.php");
             <p class="page-description">Adicione seu objeto</p>
             <form action="<?= $BASE_URL ?>object_process.php" id="add-object-form" method="POST"
             enctype="multipart/form-data">
-                <input type="hidden" name="" value="create">
+                <input type="hidden" name="type" value="create">
                 <div class="form-group">
                     <label for="title">Título:</label>
                     <input type="text" class="form-control" id="title" name="title" placeholder="Digite o nome do objeto:">

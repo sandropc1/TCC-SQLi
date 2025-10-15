@@ -11,3 +11,14 @@ CREATE TABLE if NOT EXISTS users (
   token VARCHAR(200),
   bio TEXT
 );
+
+CREATE TABLE IF NOT EXISTS objects (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(150) NOT NULL,
+  description TEXT,
+  image VARCHAR(200),
+  users_id INT UNSIGNED,
+  FOREIGN KEY (users_id) REFERENCES users(id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
