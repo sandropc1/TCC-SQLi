@@ -84,6 +84,31 @@
   border-color: #badbcc;
 }
 
+/* Novo objeto */
+
+.new-object-container {
+    text-align: center;
+}
+
+#add-object-form {
+  text-align: left;
+}
+
+.object-image-container {
+  height: 400px;
+  min-width: 200px;
+  background-position: center;
+  background-size: cover;
+}
+
+.page-title:after {
+  content:"";
+  width: 300px;
+  border-bottom: 2px solid #FFF;
+  display: block;
+  margin: 0 auto;
+  padding-top: 7px;
+}
 
 /* HOME*/
 
