@@ -7,6 +7,9 @@
     width: 50px;
 }
 
+a, u {
+  text-decoration: none;
+}
 
 #tcc-title {
     color: #FFF;
@@ -118,6 +121,55 @@
     color: #FFF;
     min-height: 75vh;
     padding: 40px;
+}
+
+.section-title {
+    font-size: 24px;
+    border-left: #1b1a1a solid 5px;
+    padding-left: 12px;
+    margin-top: 20px;
+  }
+
+.section-description {
+  color: #CCC;
+  font-size: 18px;
+}
+
+.objects-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+.object-card {
+  background-color: #000000;
+  width:18%;
+  margin-bottom: 30px;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+.object-card .card-img-top{
+  height: 300px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-title {
+  height: 1rem;
+}
+
+.card-title a {
+  font-size: 16px;
+  color: #FFF;
+}
+
+.empty-list {
+  text-align: center;
+  font-size: 18px;
+  width: 100%;
+  font-weight: bold;
 }
 
 #content {
