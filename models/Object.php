@@ -14,8 +14,8 @@ class Objects {
 interface ObjectDAOInterface {
 
     public function buildObject($data);
-    public function create(Object $object);
-    public function update(Object $object);
+    public function create(Objects $object);
+    public function update(Objects $object);
     public function delete($id);
     public function findAll();
     public function findById($id);

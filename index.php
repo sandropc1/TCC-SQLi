@@ -1,18 +1,24 @@
 <?php
 require_once("templates/header.php");
+
+require_once("dao/ObjectDAO.php");
+
+        $objectDao = new ObjectDAO($conn, $BASE_URL);
+
+        $latestObjects = $objectDao->findLatestObjects();
+
 ?>
     
     <div id="main-container" class="container-fluid">
         <h2 class="section-title">Objetos novos</h2>
         <p class="section-description">Lista de objetos:</p>
         <div class="objects-container">
-            <div class="card object-card">
-                <div class="card-img-top" style="background-image: url('<?= $BASE_URL ?>img/object.png')"></div>
-                <div class="card-body">
-                    <h5 class="card-title"><a href="#">Objeto</a></h5>
-                    <a href="#" class="btn btn-primary card-btn">Conhecer</a>
-                </div>
-        </div>
+        <?php foreach($latestObjects as $object): ?>
+            <?php require("templates/object_card.php"); ?>
+        <?php endforeach; ?>
+        <?php if(count($latestObjects) === 0): ?>
+            <p class="empty-list">Ainda não há objetos cadastrados!</p>
+        <?php endif; ?>
     </div>
     <?php
         require_once("templates/footer.php");

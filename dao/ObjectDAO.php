@@ -18,7 +18,7 @@ class ObjectDAO implements ObjectDAOInterface {
 
     public function buildObject($data){
 
-        $object = new Object();
+        $object = new Objects();
 
         $object->id = $data["id"];
         $object->title = $data["title"];
@@ -30,7 +30,7 @@ class ObjectDAO implements ObjectDAOInterface {
   
     }
 
-    public function create(Object $object){
+    public function create(Objects $object){
 
         $stmt = $this->conn->prepare("INSERT INTO objects(
             title, image, description, users_id
@@ -68,6 +68,21 @@ class ObjectDAO implements ObjectDAOInterface {
     }
     public function findLatestObjects(){
 
+        $objects = [];
+
+        $stmt = $this->conn->prepare("SELECT * FROM objects ORDER BY id DESC");
+
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0){
+
+            $objectsArray = $stmt->fetchAll();
+
+            foreach($objectsArray as $objectItem){
+                $objects[] = $this->buildObject($objectItem);
+            }
+        }
+            return $objects;
     }
 
 }
