@@ -55,7 +55,7 @@ require_once("dao/UserDAO.php");
                     </a>
                     </li>
                     <li class="nav-item">
-                    <a href="<?= $BASE_URL ?>dashboard.php" class="nav-link">Meus Objetos</a>
+                    <a href="<?= $BASE_URL ?>newobject.php" class="nav-link">Meus Objetos</a>
                     </li>
                     <li class="nav-item">
                     <a href="<?= $BASE_URL ?>editprofile.php" class="nav-link bold">
