@@ -13,9 +13,10 @@ require_once("dao/ObjectDAO.php");
     $objectDAO = new ObjectDAO($conn, $BASE_URL);
 
     $type = filter_input(INPUT_POST, "type");
+    $id = filter_input(INPUT_POST, "id");
 
     $userData = $userDAO->verifyToken();
-
+    
     if($type === "create"){
 
 

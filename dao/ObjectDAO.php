@@ -59,7 +59,24 @@ class ObjectDAO implements ObjectDAOInterface {
     }
     public function findById($id){
 
+        $object = [];
+
+        $stmt = $this->conn->prepare("SELECT * FROM objects WHERE id = :id");
+
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0){
+            $objectData = $stmt->fetch();
+
+            $object = $this->buildObject($objectData); 
+
+            return $object;
+        }
+        
+            return false;
     }
+
     public function findByTitle($title){
 
     }
