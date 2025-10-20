@@ -99,6 +99,26 @@ class ObjectDAO implements ObjectDAOInterface {
 
     public function findByUserId($id){
 
+        $objects = [];
+
+        $stmt = $this->conn->prepare("SELECT * FROM objects
+                                        WHERE users_id = :users_id");
+
+        $stmt->bindParam(":users_id", $id);
+
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0) {
+
+            $objectsArray = $stmt->fetchAll();
+
+            foreach($objectsArray as $object) {
+            $objects[] = $this->buildObject($object);
+            }
+
+      }
+
+      return $objects;
     }
     public function findLatestObjects(){
 

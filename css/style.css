@@ -284,6 +284,72 @@ a, u {
   width: auto;
 }
 
+/* Dashboard */
+
+#add-object-container {
+  text-align: right;
+}
+
+#object-dashboard .table{
+  background-color: #a30000 !important; 
+}
+
+#object-dashboard .table th {
+  border-top: none;
+}
+
+#object-dashboard .table tr {
+  padding: 15px 0;
+}
+
+.table-object-title {
+  color: #252525;
+  font-weight: bold;
+  transition: .5s;
+}
+
+.actions-column {
+  max-width: 75px;
+  text-align: center;
+}
+
+.actions-column form {
+  display: inline-block;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 0 5px;
+  font-weight: bold;
+  transition: .5s;
+  border: none;
+}
+
+.edit-btn {
+  background-color: rgb(0, 0, 0);
+  color: #FFF;
+}
+
+.edit-btn:hover {
+  background-color: transparent;
+  color: #000000;
+  text-decoration: none;
+}
+
+.delete-btn {
+  background-color: #DC3545;
+  color: #FFF;
+}
+
+.delete-btn:hover {
+  background-color: transparent;
+  color: #DC3545;
+  text-decoration: none;
+}
+
+
 /* Footer */
 
 #footer {
