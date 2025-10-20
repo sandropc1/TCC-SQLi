@@ -31,6 +31,11 @@ $object = $objectDao->findById($id); // Verifica se o filme existe
     <div class="row">
         <div class="offset-md-1 col-md-6 object-container">
             <h1 class="page-title"> <?= $object->title ?></h1>
+            <div id = "div-contents" class="col-md-3">
+                <div class="object-image-container" style="background-image: url('<?= $BASE_URL ?>/img/objects/<?= $object->image?>')"></div>
+                <p><?= $object->description?></p>
+            </div>
+            
         </div>
     </div>
 </div>

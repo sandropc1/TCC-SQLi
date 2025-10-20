@@ -8,6 +8,10 @@ class Objects {
     public $description;
     public $users_id;
 
+
+    public function imageGenerateName() {
+        return bin2hex(random_bytes(16)); 
+    }
 }
 
 

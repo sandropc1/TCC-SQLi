@@ -1,5 +1,4 @@
 <?php
-
 require_once("globals.php");
 require_once("db.php");
 require_once("models/Object.php");
@@ -7,42 +6,76 @@ require_once("models/Message.php");
 require_once("dao/UserDAO.php");
 require_once("dao/ObjectDAO.php");
 
+$message   = new Message($BASE_URL);
+$userDAO   = new UserDAO($conn, $BASE_URL);
+$objectDAO = new ObjectDAO($conn, $BASE_URL);
 
-    $message = new Message($BASE_URL);
-    $userDAO = new UserDAO($conn, $BASE_URL);    
-    $objectDAO = new ObjectDAO($conn, $BASE_URL);
+$type = filter_input(INPUT_POST, "type");
 
-    $type = filter_input(INPUT_POST, "type");
-    $id = filter_input(INPUT_POST, "id");
+$userData = $userDAO->verifyToken();
 
-    $userData = $userDAO->verifyToken();
-    
-    if($type === "create"){
+if ($type === "create") {
 
+    $title = filter_input(INPUT_POST, "title");
+    $description = filter_input(INPUT_POST, "description");
 
-        $title = filter_input(INPUT_POST, "title");
-        $description = filter_input(INPUT_POST, "description");
+    // Atenção ao nome da classe: verifique se é Object (singular)
+    $object = new Objects();
 
-        $object = new Objects();
+    if (!empty($title) && !empty($description)) {
 
-        if(!empty($title) && !empty($description)){
+        $object->title = $title;
+        $object->description = $description;
+        $object->users_id  = $userData->id;
 
-            $object->title = $title;
-            $object->description = $description;
-            $object->users_id = $userData->id;
+        // === Upload da imagem (antes de inserir no BD) ===
+        if (isset($_FILES["image"]) && !empty($_FILES["image"]["tmp_name"])) {
 
-            $objectDAO->create($object);
+            $image = $_FILES["image"];
+            $imageTypes = ["image/jpeg", "image/jpg", "image/png"];
+            $jpgArray   = ["image/jpeg", "image/jpg"];
 
-            $message->setMessage("Objeto adicionado com sucesso!", "success", "index.php");
+            if (in_array($image["type"], $imageTypes)) {
 
-        }else{
-            $message->setMessage("Por favor, preencha todos os campos!", "error", "back");
+                if (in_array($image["type"], $jpgArray)) {
+                    $imgRes = imagecreatefromjpeg($image["tmp_name"]);
+                    $ext = ".jpg";
+                } else {
+                    $imgRes = imagecreatefrompng($image["tmp_name"]);
+                    $ext = ".png";
+                }
+
+                if (!$imgRes) {
+                    $message->setMessage("Falha ao processar a imagem.", "error", "back");
+                }
+
+                // Gere um nome (use seu método do modelo)
+                $imageName = $object->imageGenerateName() . $ext;
+
+                // Garanta que a pasta exista e tenha permissão (chmod 775/777 conforme ambiente)
+                $destPath = __DIR__ . "/img/objects/" . $imageName;
+
+                // Salva sempre em JPG de alta qualidade (ou use lógica por tipo)
+                imagejpeg($imgRes, $destPath, 100);
+                imagedestroy($imgRes);
+
+                $object->image = $imageName;
+
+            } else {
+                $message->setMessage("Tipo inválido de imagem, envie PNG ou JPG.", "error", "back");
+            }
         }
 
-        print_r($_POST); print_r($_FILES); exit;
-
+        // === Agora insere já com $object->image (se houver) ===
         $objectDAO->create($object);
 
+        // Só depois de tudo, manda a mensagem/redirect
+        $message->setMessage("Objeto adicionado com sucesso!", "success", "index.php");
+
     } else {
-        $message->setMessage("Informações inválidas!", "error", "index.php");
+        $message->setMessage("Por favor, preencha todos os campos!", "error", "back");
     }
+
+} else {
+    $message->setMessage("Informações inválidas!", "error", "index.php");
+}

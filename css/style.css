@@ -98,29 +98,52 @@ a, u {
 }
 
 .object-image-container {
-  height: 400px;
-  min-width: 200px;
-  background-position: center;
-  background-size: cover;
+    width: 250px;
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    flex-shrink: 0;
 }
 
-.page-title:after {
-  content:"";
+.page-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+    display: inline-block;
+}
+#div-contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#div-contents p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #ddd;
+    margin-top: 5px;
+}
+
+.page-title::after {
+  content: "";
   width: 300px;
   border-bottom: 2px solid #FFF;
   display: block;
-  margin: 0 auto;
-  padding-top: 7px;
+  margin-top: 7px; /* substitui o padding-top */
 }
+
 
 /* HOME*/
 
 #main-container {
-    /* background-image: url('/img/test.gif'); */
-    background-color: #1b1a1a;
-    color: #FFF;
-    min-height: 75vh;
-    padding: 40px;
+    background-color: #1a1a1a;
+    color: #f0f0f0;
+    min-height: 100vh;
+    padding-top: 50px;
+    font-family: 'Poppins', sans-serif;
+    flex: 1;
 }
 
 .section-title {
@@ -256,7 +279,8 @@ a, u {
   margin-top: 30px;
 }
 
-.edit-profile-page .card-btn {
+.edit-profile-page .card-btn,
+#add-object-container .card-btn {
   width: auto;
 }
 

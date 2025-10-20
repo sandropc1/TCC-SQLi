@@ -10,6 +10,7 @@ require_once("dao/ObjectDAO.php");
 ?>
     
     <div id="main-container" class="container-fluid">
+        
         <h2 class="section-title">Objetos novos</h2>
         <p class="section-description">Lista de objetos:</p>
         <div class="objects-container">

@@ -78,8 +78,25 @@ class ObjectDAO implements ObjectDAOInterface {
     }
 
     public function findByTitle($title){
+        
+        $objects = [];
 
+        $stmt = $this->conn->prepare("SELECT * FROM objects WHERE title LIKE :title");
+
+        $stmt->bindValue(":title", '%'.$title.'%');
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0){
+            $objectArray = $stmt->fetchAll();
+
+            foreach($objectArray as $object){
+                $objects[] = $this->buildObject($object);
+            }
+        }
+        
+            return $objects;
     }
+
     public function findByUserId($id){
 
     }

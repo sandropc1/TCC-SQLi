@@ -23,7 +23,7 @@ require_once("dao/UserDAO.php");
                 </div>
                  <div class="form-group">
                     <label for="image">Imagem:</label>
-                    <input type="file" class="form-control-file" id="image" name="title">
+                    <input type="file" class="form-control-file" id="image" name="image">
                 </div>
                  <div class="form-group">
                     <label for="description">Descrição:</label>
