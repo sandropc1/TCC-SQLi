@@ -19,7 +19,9 @@
                 
                 <li><a href="#">Adicionar review</a></li>
                 -->
+                <?php if(!$userData): ?>
                 <li><a href="<?= $BASE_URL ?>auth.php">Entrar / Registrar</a></li>
+                <?php endif; ?>
             </ul>
         </div>
         <p>&copy; 2025 Sandro Pinheiro Christe</p>
