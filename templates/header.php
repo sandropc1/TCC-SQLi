@@ -64,6 +64,7 @@ if (!isset($userData)) {
             </div>
         </nav>
     </header>
+    <div class="page-wrapper"> <!-- início do container -->
     <?php if(!empty($flassMessage["msg"])): ?>
         <div class="msg-container">
             <p class = "msg <?= $flassMessage["type"] ?>"><?= $flassMessage["msg"] ?></p>

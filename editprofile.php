@@ -45,7 +45,7 @@ require_once("dao/UserDAO.php");
                         <div id="profile-image-container" style="background-image: url('<?= $BASE_URL ?>img/users/<?= $userData->image ?>')"></div>
                             <div class="form-group">
                             <label for="image">Foto:</label>
-                            <input type="file" class="form-control-file" name="image">
+                            <input type="file" class="form-control-file" name="image" id="image">
                             </div>
                          <div class="form-group">
                             <label for="bio">Sobre</label>

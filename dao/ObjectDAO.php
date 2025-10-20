@@ -49,6 +49,23 @@ class ObjectDAO implements ObjectDAOInterface {
 
     }
     public function update(Object $object){
+        
+        $stmt = $this->conn->prepare("UPDATE objects SET
+            title = :title,
+            image = :image,
+            description = :description
+            WHERE id = :id
+        ");
+
+        $stmt->bindParam(":title", $object->title);
+        $stmt->bindParam(":image", $object->image);
+        $stmt->bindParam(":description", $object->description);
+        $stmt->bindParam(":id", $object->id);
+
+        $stmt->execute();
+
+        $this->message->setMessage("Objeto editado com sucesso!", "success", "index.php");
+
 
     }
     public function delete($id){

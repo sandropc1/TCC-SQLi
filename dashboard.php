@@ -36,7 +36,7 @@ require_once("templates/header.php");
             <td scope="row"><?= $object->id ?></td>
             <td><a href="<?= $BASE_URL ?>object.php?id=<?= $object->id?>" class="table-object-title"><?= $object->title ?></a></td>
             <td class="actions-column">
-              <a href="<?= $BASE_URL ?>editmovie.php?id=<?= $object->id ?>" class="edit-btn">
+              <a href="<?= $BASE_URL ?>editobject.php?id=<?= $object->id ?>" class="edit-btn">
                 <i class="far fa-edit"></i> Editar
               </a>
               <form action="<?= $BASE_URL ?>object_process.php" method="POST">

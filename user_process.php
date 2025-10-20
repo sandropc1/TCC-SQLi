@@ -29,6 +29,43 @@ require_once("dao/UserDAO.php");
         $userData->email = $email;
         $userData->bio = $bio;
 
+        if (isset($_FILES["image"]) && !empty($_FILES["image"]["tmp_name"])) {
+
+            $image = $_FILES["image"];
+            $imageTypes = ["image/jpeg", "image/jpg", "image/png"];
+            $jpgArray   = ["image/jpeg", "image/jpg"];
+
+            if (in_array($image["type"], $imageTypes)) {
+
+                if (in_array($image["type"], $jpgArray)) {
+                    $imgRes = imagecreatefromjpeg($image["tmp_name"]);
+                    $ext = ".jpg";
+                } else {
+                    $imgRes = imagecreatefrompng($image["tmp_name"]);
+                    $ext = ".png";
+                }
+
+                if (!$imgRes) {
+                    $message->setMessage("Falha ao processar a imagem.", "error", "back");
+                }
+
+                // Gere um nome (use seu método do modelo)
+                $imageName = $user->imageGenerateName() . $ext;
+
+                // Garanta que a pasta exista e tenha permissão (chmod 775/777 conforme ambiente)
+                $destPath = __DIR__ . "/img/users/" . $imageName;
+
+                // Salva sempre em JPG de alta qualidade (ou use lógica por tipo)
+                imagejpeg($imgRes, $destPath, 100);
+                imagedestroy($imgRes);
+
+                $userData->image = $imageName;
+
+            } else {
+                $message->setMessage("Tipo inválido de imagem, envie PNG ou JPG.", "error", "back");
+            }
+        }
+
         $userDAO->update($userData);
 
     }else if($type === "changepassword"){

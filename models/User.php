@@ -14,6 +14,10 @@
             return bin2hex(random_bytes(50));
         }
 
+        public function imageGenerateName() {
+        return bin2hex(random_bytes(16)); 
+        }
+        
         public function generatePassword($password){
             return password_hash($password, PASSWORD_DEFAULT);
         }
