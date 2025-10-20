@@ -19,8 +19,9 @@ require_once("dao/ObjectDAO.php");
             <?php require("templates/object_card.php"); ?>
         <?php endforeach; ?>
         <?php if(count($objects) === 0): ?>
-            <p class="empty-list">Nenhum objeto encontrado</p>
+            <p class="empty-list">Nenhum objeto encontrado. <a href="<?= $BASE_URL ?>" class="back-link">Voltar</a>.</p>
         <?php endif; ?>
+        </div>
     </div>
     <?php
         require_once("templates/footer.php");

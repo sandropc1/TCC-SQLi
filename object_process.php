@@ -76,6 +76,20 @@ if ($type === "create") {
         $message->setMessage("Por favor, preencha todos os campos!", "error", "back");
     }
 
+}else if($type === "delete"){
+
+    $id = filter_input(INPUT_POST, "id");
+
+    $object = $objectDAO->findById($id);
+
+    if($object && $object->users_id === $userData->id){
+
+        $objectDAO->delete($id);
+
+    } else {
+        $message->setMessage("Informações inválidas!", "error", "index.php");
+    }
+
 } else {
     $message->setMessage("Informações inválidas!", "error", "index.php");
 }

@@ -20,6 +20,7 @@ require_once("dao/ObjectDAO.php");
         <?php if(count($latestObjects) === 0): ?>
             <p class="empty-list">Ainda não há objetos cadastrados!</p>
         <?php endif; ?>
+         </div>
     </div>
     <?php
         require_once("templates/footer.php");

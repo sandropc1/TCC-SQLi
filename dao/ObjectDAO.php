@@ -53,7 +53,16 @@ class ObjectDAO implements ObjectDAOInterface {
     }
     public function delete($id){
 
+        $stmt = $this->conn->prepare("DELETE FROM objects WHERE id = :id");
+
+        $stmt->bindParam(":id", $id);
+
+        $stmt->execute();
+
+        $this->message->setMessage("Objeto deletado com sucesso!", "success", "index.php");
+
     }
+    
     public function findAll(){
 
     }
