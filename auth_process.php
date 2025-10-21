@@ -70,7 +70,7 @@ require_once("dao/UserDAO.php");
         // Tenta autenticar usuário
         if($userDAO->authenticateUser($email, $password)) {
     
-          $message->setMessage("Seja bem-vindo!", "success", "editprofile.php");
+          $message->setMessage("Seja bem-vindo!", "success", "index.php");
     
         // Redireciona o usuário, caso não conseguir autenticar
         } else {
