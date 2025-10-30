@@ -1,23 +1,23 @@
 html, body {
-  height: 100% !important;           /* ocupa 100% da viewport */
+  min-height: 100%;
   margin: 0;
-  display: flex;
-  flex-direction: column;       /* empilha tudo verticalmente */
 }
 
 .page-wrapper {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  min-height:100vh; 
 }
 
 .navbar-brand {
-    position: relative;
+    display:flex; 
+    align-items:center;
+    gap:12px;
 }
 
 #logo {
-    margin-left: 20px;
-    width: 50px;
+    width:50px; 
+    margin-left:0; 
 }
 
 a, u {
@@ -26,8 +26,7 @@ a, u {
 
 #tcc-title {
     color: #FFF;
-    position: absolute;
-    bottom: -2px;
+    position: static;
     font-size: 30px;
     left: 75px;
     font-weight: bold;
@@ -281,7 +280,7 @@ a, u {
 }
 
 #bio {
-  max-width: 400;
+  max-width: 400px;
 }
 
 .form-control.disabled {
